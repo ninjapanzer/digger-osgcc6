@@ -19,12 +19,12 @@ var HUD = exports.HUD = function(){
    	var font = new gamejs.font.Font('20px monospace');
 
    	//Upper Level
-   		var headingSurface = font.render('Resources', '#ffffff');
-   		display.blit(headingSurface, [10, 5]);
-   		var upgradeHeadingSurface = font.render('Upgrades', '#ffffff');
-   		display.blit(upgradeHeadingSurface,[500,5])
-   		var scoreHeadingSurface = font.render('Score', '#ffffff');
-   		display.blit(scoreHeadingSurface, [globals.screenDim[0]-(scoreHeadingSurface.getSize()[0]+10),5]);
+   	var headingSurface = font.render('Resources', '#ffffff');
+   	display.blit(headingSurface, [10, 5]);
+   	var upgradeHeadingSurface = font.render('Upgrades', '#ffffff');
+   	display.blit(upgradeHeadingSurface,[550,5])
+   	var scoreHeadingSurface = font.render('Score', '#ffffff');
+   	display.blit(scoreHeadingSurface, [globals.screenDim[0]-(scoreHeadingSurface.getSize()[0]+10),5]);
 
    	var scoreTotal = 0;
    	player.inventory.forEach(function(item){
@@ -40,7 +40,7 @@ var HUD = exports.HUD = function(){
    		position[0] = position[0] + messageSize[0]+11;
    	});
 
-   	var scoreValueSurface = font.render(scoreTotal*60000*50*50*100, '#ffffff');
+   	var scoreValueSurface = font.render(scoreTotal, '#ffffff');
    	display.blit(scoreValueSurface, [globals.screenDim[0]-(scoreValueSurface.getSize()[0]+10),30]);
    }
    return this;
