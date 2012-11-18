@@ -11,23 +11,21 @@ gamejs.preload(globals.imgArray());
 
 gamejs.ready(function() {
 
-    var display = gamejs.display.setMode([600, 400]);
+    var display = gamejs.display.setMode(globals.screenDim);
     display.blit(new gamejs.image.load('assets/tiles/tiletest.png'));
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
-    //var gTiles = new gamejs.sprite.Group();
+    var gTiles = tile.Setup([]);
     var myPlayer = new player.Player([64,0]);
+    var tileGroupControl = tile.GroupController(gTiles,[]);
     myPlayer.draw(mainSurface);
-    //gTiles.add(tile);
-    //gTiles.draw(mainSurface);
 
     var tick = function(msDuration) {
         gamejs.event.get().forEach(function(event) {
             myPlayer.handle(event);
-            //console.log(myPlayer.rect.center);
         });
-        console.log(msDuration);
         display.clear();
+        gTiles.draw(mainSurface);
         myPlayer.draw(mainSurface);
     }
     gamejs.time.fpsCallback(tick, this, 60);

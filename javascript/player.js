@@ -11,6 +11,8 @@ var Player = exports.Player = function(initialLocation) {
          	if(this.rect.x - globals.tileSize[1] > 0){
          		this.rect.x -= globals.tileSize[1];
             	this.image = gamejs.image.load('assets/images/player/player_left.png');
+         	}else{
+         		this.rect.x += globals.screenDim[1]/2;
          	}
          } else if (event.key === gamejs.event.K_RIGHT) {
          	if(this.rect.x + globals.tileSize[1] < globals.screenDim[0]){
