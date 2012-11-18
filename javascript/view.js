@@ -1,3 +1,5 @@
+var gamejs = require('gamejs')
+
 var MapController = function() {
 
    this.offset = [0,0];
@@ -23,18 +25,11 @@ var MapController = function() {
    return this;
 };
 
-var Tile = function(rect) {
+var Tile = exports.Tile = function(rect) {
    // call superconstructor
-   Ship.superConstructor.apply(this, arguments);
+   Tile.superConstructor.apply(this, arguments);
    this.speed = 0;
-   this.originalImage = gamejs.image.load("assets/tiles/tiletest.png");
-   var dims = this.originalImage.getSize();
-   this.originalImage = gamejs.transform.scale(
-                                this.originalImage,
-                                [dims[0] * (0.5 + Math.random()), dims[1] *  (0.5 + Math.random())]
-                        );
-   //this.rotation = 50 + parseInt(120*Math.random());
-   //this.image = gamejs.transform.rotate(this.originalImage, this.rotation);
+   this.image = gamejs.image.load("assets/tiles/tiletest.png");
    this.rect = new gamejs.Rect(rect);
    return this;
 };
