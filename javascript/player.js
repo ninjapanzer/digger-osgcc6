@@ -77,7 +77,7 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	this.image = gamejs.image.load('assets/images/player/player_right.png');
 	this.rect = new gamejs.Rect(initialLocation,globals.playerSizeAry);
    this.inventory = [];
-   this.upgrades = [new Item("Drill", 0, 'assets/images/player/drill-upgrade.png'), new Item("Gear", 0, 'assets/images/player/gear-upgrade.png')];
+   this.upgrades = [new Upgrade("Drill", 0, 'assets/images/player/drill-upgrade.png', ["Red Gem", 1]), new Upgrade("Gear", 0, 'assets/images/player/gear-upgrade.png',["Red Gem", 1])];
    this.difficulty = 0;
 
    this.revertPos = function(){
@@ -151,9 +151,10 @@ var Player = exports.Player = function(initialLocation, tileControl) {
          var value = 1;
       };
       var found = false;
-      for(var i = 0; i< this.inventory.length; i++){
+      for(var i = 0; i < this.inventory.length; i++){
          if(this.inventory[i].name == name){
             if(this.inventory[i].count < value){
+               console.log(this.inventory[i]);
                found = false;
             }else{
                //this.inventory[i].count -= value;
@@ -194,11 +195,22 @@ var Upgrade = exports.Upgrade = function(name, value, image, cost){
             canBuy = false;
          }
       });
-      this.cost.forEach(function(item){
-         !globals.Player.removeInventory(item[0], item[1]);
-      });
+      console.log(canBuy);
+      if(canBuy){
+         this.cost.forEach(function(item){
+            globals.Player.removeInventory(item[0], item[1]);
+         });
+      }
    }
 
+   this.handle = function(event) {
+      if (event.type === gamejs.event.MOUSE_DOWN) {
+         if(event.pos[0] > this.rect.x && event.pos[0] < (this.rect.x + this.rect.height)){
+            globals.Player.upgrade();
+            //this.pay();
+         }
+      }
+   }
    return this;
 }
-gamejs.utils.objects.extend(Item, gamejs.sprite.Sprite);
+gamejs.utils.objects.extend(Upgrade, gamejs.sprite.Sprite);

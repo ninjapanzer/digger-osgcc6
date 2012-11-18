@@ -23,6 +23,10 @@ gamejs.ready(function() {
     var tick = function(msDuration) {
         gamejs.event.get().forEach(function(event) {
             myPlayer.handle(event);
+            myPlayer.upgrades.forEach(function(item){
+                item.handle(event);
+            });
+
         });
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);

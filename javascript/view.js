@@ -8,8 +8,8 @@ globals.imgArray().push('assets/images/player/coalpop.png');
 globals.imgArray().push('assets/images/player/greenpop.png');
 globals.imgArray().push('assets/images/player/redpop.png');
 var HUD = exports.HUD = function(){
-   this.HUD = new gamejs.Rect([0,0], [globals.screenDim[0],50]);
-   this.HUDBorder = new gamejs.Rect([0,0], [globals.screenDim[0],50]);
+   this.HUD = new gamejs.Rect([0,0], [globals.screenDim[0],70]);
+   this.HUDBorder = new gamejs.Rect([0,0], [globals.screenDim[0],70]);
    this.color = '#000000'
    this.draw = function(surface){
       draw.rect(surface, this.color, this.HUD, 0);
@@ -42,13 +42,26 @@ var HUD = exports.HUD = function(){
    		scoreTotal += item.count*item.value;
    		var resourceCountSurface = font.render(item.count, '#ffffff');
    		var messageSize = resourceCountSurface.getSize();
-   		position[0] =  position[0] + 11;
+   		position[0] =  position[0] + 15;
    		display.blit(resourceCountSurface, position);
    		position[0] = position[0] + messageSize[0]+11;
    	});
 
    	var scoreValueSurface = font.render(scoreTotal, '#ffffff');
    	display.blit(scoreValueSurface, [globals.screenDim[0]-(scoreValueSurface.getSize()[0]+10),30]);
+
+      position = [500,30];
+      player.upgrades.forEach(function(item){
+         item.rect.x = position[0];
+         item.rect.y = position[1];
+         item.draw(display);
+         position[0] =  position[0] + 50;
+
+      });
+      var upgradeOptionSurface;
+
+
+
    }
    return this;
 };
