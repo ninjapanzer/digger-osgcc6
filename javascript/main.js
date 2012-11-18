@@ -4,7 +4,6 @@ var view = require('./view');
 var tile = require('./tile');
 var player = require('./player');
 
-
 // gamejs.preload([]);
 
 gamejs.preload(globals.imgArray());
@@ -26,7 +25,10 @@ gamejs.ready(function() {
         });
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);
-        myPlayer.addInventory("Red Gem")
+        myPlayer.addInventory("Red Gem");
+        myPlayer.addInventory("Blue Gem");
+        myPlayer.addInventory("Green Gem");
+        myPlayer.addInventory("Diamond");
         myPlayer.draw(mainSurface);
         HUD.draw(mainSurface);
         HUD.update(myPlayer, display);

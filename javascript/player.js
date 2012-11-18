@@ -5,9 +5,15 @@ globals.imgArray().push('assets/images/player/player_up.png');
 globals.imgArray().push('assets/images/player/player_left.png');
 globals.imgArray().push('assets/images/player/player_right.png');
 globals.imgArray().push('assets/images/player/redgem.png');
+globals.imgArray().push('assets/images/player/bluegem.png');
+globals.imgArray().push('assets/images/player/greengem.png');
+globals.imgArray().push('assets/images/player/cleargem.png');
 var Player = exports.Player = function(initialLocation, tileControl) {
 	this.tileControl = tileControl;
-   var availableGems = [new Item("Red Gem", 100, 'assets/images/player/redgem.png'), new Item("Blue Gem", 100, 'assets/images/player/redgem.png')];
+   var availableGems = [new Item("Red Gem", 100, 'assets/images/player/redgem.png'),
+   new Item("Blue Gem", 100, 'assets/images/player/bluegem.png'),
+   new Item("Green Gem", 100, 'assets/images/player/greengem.png'),
+   new Item("Diamond", 1000, 'assets/images/player/cleargem.png')];
 	this.handle = function(event) {
       if (event.type === gamejs.event.KEY_DOWN) {
          if (event.key === gamejs.event.K_LEFT) {
