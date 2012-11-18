@@ -4,3 +4,4 @@ exports.tileSize = [64,64];
 exports.imgArray = function(){
 	return img;
 }
+exports.screenDim = [1200,800];
