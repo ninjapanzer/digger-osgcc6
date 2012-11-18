@@ -15,7 +15,7 @@ gamejs.ready(function() {
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
     var tileGroupControl = tile.Setup([]);;
-    var myPlayer = new player.Player([64,0], tileGroupControl);
+    var myPlayer = new player.Player([32,32], tileGroupControl);
     globals.Player = myPlayer;
     //myPlayer.draw(mainSurface);
     var HUD = new view.HUD;
