@@ -1,0 +1,1 @@
+var globals = require('./globals')
