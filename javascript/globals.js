@@ -8,3 +8,5 @@ exports.imgArray = function(){
 	return img;
 }
 exports.screenDim = [1200,800];
+exports.destroyCount = 0;
+exports.Player;
