@@ -26,6 +26,7 @@ gamejs.ready(function() {
         });
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);
+        myPlayer.addInventory("Red Gem")
         myPlayer.draw(mainSurface);
         HUD.draw(mainSurface);
         HUD.update(myPlayer, display);
