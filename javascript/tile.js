@@ -1,4 +1,5 @@
 var globals = require('./globals');
+var gamejs = require('gamejs');
 
 var Tile = exports.Tile = function(rect) {
    // call superconstructor
