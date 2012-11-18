@@ -15,8 +15,7 @@ gamejs.ready(function() {
     display.blit(new gamejs.image.load('assets/tiles/tiletest.png'));
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
-    var gTiles = tile.Setup([]);
-    var tileGroupControl = tile.GroupController(gTiles,[]);
+    var tileGroupControl = tile.Setup([]);;
     var myPlayer = new player.Player([64,0], tileGroupControl);
     //myPlayer.draw(mainSurface);
 
@@ -25,7 +24,7 @@ gamejs.ready(function() {
             myPlayer.handle(event);
         });
         display.clear();
-        gTiles.draw(mainSurface);
+        tileGroupControl.tileGroup.draw(mainSurface);
         myPlayer.draw(mainSurface);
     }
     gamejs.time.fpsCallback(tick, this, 60);
