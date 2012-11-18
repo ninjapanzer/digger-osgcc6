@@ -11,6 +11,14 @@ var Tile = exports.Tile = function(rect) {
    this.image = gamejs.image.load("assets/tiles/tiletest.png");
    var dims = this.image.getSize();
    this.rect = new gamejs.Rect(rect, dims);
+   console.log(this.kill);
+   this.kill = function(){
+      this._alive = false;
+      this._groups.forEach(function(group) {
+         group.remove(this);
+      }, this);
+      return;
+      }
    return this;
 };
 // inherit (actually: set prototype)
