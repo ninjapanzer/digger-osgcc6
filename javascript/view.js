@@ -12,11 +12,14 @@ var HUD = exports.HUD = function(){
    this.update = function(player, display){
    	var position = [100,25];
    	player.inventory.forEach(function(item){
+   		item.rect.x = position[0];
+   		item.rect.y = position[1];
+   		item.draw(display);
    		var font = new gamejs.font.Font('20px monospace');
-   		var helloSurface = font.render(item.name, '#ffffff');
+   		var helloSurface = font.render(item.count, '#ffffff');
    		var messageSize = helloSurface.getSize();
    		display.blit(helloSurface, position);
-   		position[0] +=  messageSize[0] + 10;
+   		position[0] +=  position[1] + 5;
    	});
    }
    return this;
