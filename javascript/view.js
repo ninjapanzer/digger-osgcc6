@@ -22,3 +22,21 @@ var MapController = function() {
 
    return this;
 };
+
+var Tile = function(rect) {
+   // call superconstructor
+   Ship.superConstructor.apply(this, arguments);
+   this.speed = 0;
+   this.originalImage = gamejs.image.load("assets/tiles/tiletest.png");
+   var dims = this.originalImage.getSize();
+   this.originalImage = gamejs.transform.scale(
+                                this.originalImage,
+                                [dims[0] * (0.5 + Math.random()), dims[1] *  (0.5 + Math.random())]
+                        );
+   //this.rotation = 50 + parseInt(120*Math.random());
+   //this.image = gamejs.transform.rotate(this.originalImage, this.rotation);
+   this.rect = new gamejs.Rect(rect);
+   return this;
+};
+// inherit (actually: set prototype)
+gamejs.utils.objects.extend(Tile, gamejs.sprite.Sprite);
