@@ -1,0 +1,4 @@
+You have found a resource! 
+You can use resources to upgrade your drill.
+This will allow you to dig into tougher rocks 
+and uncover rarer gems! 
