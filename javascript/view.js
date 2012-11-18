@@ -15,12 +15,12 @@ var HUD = exports.HUD = function(){
    		item.rect.x = position[0];
    		item.rect.y = position[1];
    		item.draw(display);
-   		position[0] +=  position[1] + 2;
    		var font = new gamejs.font.Font('20px monospace');
    		var helloSurface = font.render(item.count, '#ffffff');
    		var messageSize = helloSurface.getSize();
+   		position[0] =  position[0] + 11;
    		display.blit(helloSurface, position);
-   		position[0] += position[1] + 5;
+   		position[0] = position[0] + 55;
    	});
    }
    return this;
