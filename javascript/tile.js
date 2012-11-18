@@ -28,6 +28,7 @@ var Tile = exports.Tile = function(rect) {
          globals.Player.revertPos();
          return;
       }
+      globals.gameDeath += .005
       this._alive = false;
       this._groups.forEach(function(group) {
          group.remove(this);

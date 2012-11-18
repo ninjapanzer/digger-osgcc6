@@ -15,11 +15,11 @@ gamejs.ready(function() {
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
     var tileGroupControl = tile.Setup([]);;
-    var myPlayer = new player.Player([32,32], tileGroupControl);
+    var myPlayer = new player.Player([500,370], tileGroupControl);
     globals.Player = myPlayer;
     //myPlayer.draw(mainSurface);
     var HUD = new view.HUD;
-
+    myPlayer.tileControl.move([(globals.screenDim[0]/2)/2,0]);
     var tick = function(msDuration) {
         gamejs.event.get().forEach(function(event) {
             myPlayer.handle(event);
@@ -37,6 +37,11 @@ gamejs.ready(function() {
         HUD.update(myPlayer, display);
     }
     gamejs.time.fpsCallback(tick, this, 60);
+    var powerUpdate = function(msDuration){
+        myPlayer.removeCoal();
+        console.log(globals.gameDeath);
+    }
+    gamejs.time.fpsCallback(powerUpdate, this, globals.gameDeath);
     /**
     function tick(msDuration) {
         // game loop
