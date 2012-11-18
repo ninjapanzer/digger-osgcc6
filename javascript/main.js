@@ -16,9 +16,9 @@ gamejs.ready(function() {
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
     var gTiles = tile.Setup([]);
-    var myPlayer = new player.Player([64,0]);
     var tileGroupControl = tile.GroupController(gTiles,[]);
-    myPlayer.draw(mainSurface);
+    var myPlayer = new player.Player([64,0], tileGroupControl);
+    //myPlayer.draw(mainSurface);
 
     var tick = function(msDuration) {
         gamejs.event.get().forEach(function(event) {
