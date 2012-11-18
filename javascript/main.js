@@ -3,15 +3,17 @@ var gamejs = require('gamejs');
 // gamejs.preload([]);
 
 gamejs.preload([
-   'assets/images/5.jpg'
+   'assets/images/5.jpg',
+   'assets/tiles/tiletes.png'
 ]);
 
 gamejs.ready(function() {
 
     var display = gamejs.display.setMode([600, 400]);
-    display.blit(
-        
-    );
+    display.blit(new gamejs.image.load('assets/images/5.jpg'));
+    
+
+
 
 
     var tick = function(msDuration) {
