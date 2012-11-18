@@ -49,24 +49,28 @@ var HUD = exports.HUD = function(){
    }
    return this;
 };
-var Reward = exports.Reward = function(rewardType,startLoc) {
-   this.update = function() {
-      if(this.rect.top > 0) {
-         this.rect.top += 1;
-      } else { this.kill();}
-   }
-   Reward.superConstructor.apply(this, arguments);
-   switch(rewardType) {
-      case "Coal":
-         this.image = gamejs.image.load('assets/images/player/coalpop.png');
-      case "Green Gem":
-         this.image = gamejs.image.load('assets/images/player/greenpop.png');
-      case "Blue Gem":
-         this.image = gamejs.image.load('assets/images/player/bluepop.png');
-      case "Red Gem":
-         this.image = gamejs.image.load('assets/images/player/redpop.png');   
-   }
-   this.rect = new gamejs.Rect(startLoc,this.image.getSize());
-   return this;
-}
-gamejs.utils.objects.extend(Reward, gamejs.sprite.Sprite);
+//var Reward = exports.Reward = function(rewardType,startLoc,group) {
+//   //this.update = function() {
+//   //   if(this.rect.top > 0) {
+//   //      this.rect.top -= 1;
+//   //   } else if (this.rect.left > 0) {
+//   //      this.rect.left -= 1;
+//   //   } 
+//   //   else { this.kill();}
+//   //}
+//   Reward.superConstructor.apply(this, arguments);
+//   switch(rewardType) {
+//      case "Coal":
+//         this.image = gamejs.image.load('assets/images/player/coalpop.png');
+//      case "Green Gem":
+//         this.image = gamejs.image.load('assets/images/player/greenpop.png');
+//      case "Blue Gem":
+//         this.image = gamejs.image.load('assets/images/player/bluepop.png');
+//      case "Red Gem":
+//         this.image = gamejs.image.load('assets/images/player/redpop.png');   
+//   }
+//   this.rect = new gamejs.Rect(startLoc,this.image.getSize());
+//   globals.rewardGroup.add(this);
+//   return this;
+//}
+//gamejs.utils.objects.extend(Reward, gamejs.sprite.Sprite);//

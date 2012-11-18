@@ -1,6 +1,6 @@
 var globals = require('./globals');
 var gamejs = require('gamejs');
-
+var view = require('./view')
 globals.imgArray().push('assets/images/5.jpg');
 globals.imgArray().push('assets/tiles/tiletest.png');
 globals.imgArray().push('assets/tiles/layer0.png');
@@ -8,7 +8,7 @@ globals.imgArray().push('assets/tiles/layer1.png');
 globals.imgArray().push('assets/tiles/layer2.png');
 globals.imgArray().push('assets/tiles/layer3.png');
 globals.imgArray().push('assets/tiles/layer4.png');
-
+globals.imgArray().push('assets/sounds/coal_pick_up.wav');
 var Tile = exports.Tile = function(rect) {
    // call superconstructor
    Tile.superConstructor.apply(this, arguments);

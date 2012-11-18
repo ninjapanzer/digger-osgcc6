@@ -1,4 +1,4 @@
-//var gamejs = require('gamejs');
+var gamejs = require('gamejs');
 var img = [];
 exports.tileSize = [64,64];
 exports.playerSizeAry = [64,64];
@@ -10,3 +10,4 @@ exports.imgArray = function(){
 exports.screenDim = [1200,800];
 exports.destroyCount = 0;
 exports.Player;
+//exports.rewardGroup = new gamejs.sprite.Group();
