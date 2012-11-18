@@ -26,7 +26,6 @@ gamejs.ready(function() {
             myPlayer.handle(event);
             //console.log(myPlayer.rect.center);
         });
-        console.log(msDuration);
         display.clear();
         myPlayer.draw(mainSurface);
     }
