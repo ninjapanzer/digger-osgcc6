@@ -26,6 +26,7 @@ var Tile = exports.Tile = function(rect) {
 
    this.kill = function(){
       if(this.difficulty > globals.Player.difficulty){
+         globals.Player.revertPos();
          return;
       }
       this._alive = false;
