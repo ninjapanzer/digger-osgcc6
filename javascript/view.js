@@ -1,7 +1,6 @@
 var gamejs = require('gamejs');
 var globals = require('./globals');
-globals.imgArray().push('assets/images/5.jpg');
-globals.imgArray().push('assets/tiles/tiletest.png');
+
 
 var MapController = function() {
 
