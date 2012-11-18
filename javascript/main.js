@@ -16,11 +16,10 @@ gamejs.ready(function() {
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
     //var gTiles = new gamejs.sprite.Group();
+    var myPlayer = new player.Player([64,0]);
+    myPlayer.draw(mainSurface);
     //gTiles.add(tile);
     //gTiles.draw(mainSurface);
-
-
-
 
     var tick = function(msDuration) {
         //gamejs.event.get();
