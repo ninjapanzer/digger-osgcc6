@@ -22,8 +22,13 @@ gamejs.ready(function() {
     //gTiles.draw(mainSurface);
 
     var tick = function(msDuration) {
-        //gamejs.event.get();
+        gamejs.event.get().forEach(function(event) {
+            myPlayer.handle(event);
+            //console.log(myPlayer.rect.center);
+        });
         //gTiles.draw(mainSurface);
+        display.clear();
+        myPlayer.draw(mainSurface);
     }
     gamejs.time.fpsCallback(tick, this, 60);
     /**
