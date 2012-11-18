@@ -9,8 +9,91 @@ var Tile = exports.Tile = function(rect) {
    Tile.superConstructor.apply(this, arguments);
    this.speed = 0;
    this.image = gamejs.image.load("assets/tiles/tiletest.png");
+   this.difficulty=0;
    var dims = this.image.getSize();
    this.rect = new gamejs.Rect(rect, dims);
+
+   this.kill = function(){
+      this._alive = false;
+      this._groups.forEach(function(group) {
+         group.remove(this);
+      }, this);
+      globals.destroyCount += (5-this.difficulty)/.5;
+      globals.destroyCount++;
+      var awardpercentage = globals.destroyCount/100;
+      if(awardpercentage > Math.random()){
+         this.distributeRewards();
+      }
+      return;
+   }
+
+   this.distributeRewards = function(){
+      console.log("gems");
+      var rdm = Math.random();
+      switch(this.difficulty)
+      {
+         case 4:
+         if(rdm > .3){
+            globals.Player.addInventory("Diamond");
+         }
+         if(rdm > .2){
+            globals.Player.addInventory("Green Gem");
+         }
+         if(rdm > .1){
+            globals.Player.addInventory("Blue Gem");
+         }
+         if(rdm > .05){
+            globals.Player.addInventory("Red Gem");
+         }
+         globals.Player.addInventory("Coal");
+         case 3:
+         if(rdm > .4){
+            globals.Player.addInventory("Diamond");
+         }
+         if(rdm > .3){
+            globals.Player.addInventory("Green Gem");
+         }
+         if(rdm > .2){
+            globals.Player.addInventory("Blue Gem");
+         }
+         if(rdm > .1){
+            globals.Player.addInventory("Red Gem");
+         }
+            globals.Player.addInventory("Coal");
+         case 2:
+         if(rdm > .5){
+            globals.Player.addInventory("Diamond");
+         }
+         if(rdm > .4){
+            globals.Player.addInventory("Green Gem");
+         }
+         if(rdm > .3){
+            globals.Player.addInventory("Blue Gem");
+         }
+         if(rdm > .2){
+            globals.Player.addInventory("Red Gem");
+         }
+            globals.Player.addInventory("Coal");
+         case 1:
+         if(rdm > .5){
+            globals.Player.addInventory("Green Gem");
+         }
+         if(rdm > .4){
+            globals.Player.addInventory("Blue Gem");
+         }
+         if(rdm > .3){
+            globals.Player.addInventory("Red Gem");
+         }
+            globals.Player.addInventory("Coal");
+         default:
+         if(rdm > .4){
+            globals.Player.addInventory("Red Gem");
+         }
+            globals.Player.addInventory("Coal");
+      }
+      globals.destroyCount = 0;
+   };
+
    return this;
 };
 // inherit (actually: set prototype)
