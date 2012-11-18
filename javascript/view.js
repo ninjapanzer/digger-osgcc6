@@ -29,8 +29,11 @@ var HUD = exports.HUD = function(){
    	display.blit(upgradeHeadingSurface,[550,5])
    	var scoreHeadingSurface = font.render('Score', '#ffffff');
    	display.blit(scoreHeadingSurface, [globals.screenDim[0]-(scoreHeadingSurface.getSize()[0]+10),5]);
-
+      var cityPowerHeadingSurface = font.render('City Power', '#ffffff');
+      display.blit(cityPowerHeadingSurface, [globals.screenDim[0]-(scoreHeadingSurface.getSize()[0]+10 + cityPowerHeadingSurface.getSize()[0]+30),5]) ;
    	var scoreTotal = 0;
+      var cityPowerValueSurface = font.render(globals.Player.powerLevel,'#ffffff');
+      display.blit(cityPowerValueSurface, [globals.screenDim[0]-(scoreHeadingSurface.getSize()[0]+10 + cityPowerHeadingSurface.getSize()[0]+30),30])
    	player.inventory.forEach(function(item){
    		item.rect.x = position[0];
    		item.rect.y = position[1];

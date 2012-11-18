@@ -10,9 +10,13 @@ globals.imgArray().push('assets/images/player/bluegem.png');
 globals.imgArray().push('assets/images/player/greengem.png');
 globals.imgArray().push('assets/images/player/cleargem.png');
 globals.imgArray().push('assets/images/player/coalgem.png');
+globals.imgArray().push('assets/images/player/drill-upgrade.png');
+globals.imgArray().push('assets/images/player/gear-upgrade.png');
+
 var Player = exports.Player = function(initialLocation, tileControl) {
 	this.tileControl = tileControl;
-   this.lastPos = [0,0,0];
+   this.lastPos = [initialLocation[0],initialLocation[1],0,'assets/images/player/player_right.png'];
+   this.powerLevel = 100;
 
    var availableGems = [new Item("Red Gem", 100, 'assets/images/player/redgem.png'),
    new Item("Blue Gem", 100, 'assets/images/player/bluegem.png'),
@@ -23,7 +27,6 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	this.handle = function(event) {
       if (event.type === gamejs.event.KEY_DOWN) {
          this.lastPos = [this.rect.x, this.rect.y, this.image];
-         console.log(this.lastPos);
          if (event.key === gamejs.event.K_LEFT) {
          	if(this.rect.x - globals.tileSize[1] > 0){
          		this.rect.x -= globals.tileSize[1];
@@ -74,6 +77,7 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	this.image = gamejs.image.load('assets/images/player/player_right.png');
 	this.rect = new gamejs.Rect(initialLocation,globals.playerSizeAry);
    this.inventory = [];
+   this.upgrades = [new Item("Drill", 0, 'assets/images/player/drill-upgrade.png'), new Item("Gear", 0, 'assets/images/player/gear-upgrade.png')];
    this.difficulty = 0;
 
    this.revertPos = function(){
@@ -106,6 +110,59 @@ var Player = exports.Player = function(initialLocation, tileControl) {
          }
       }
    };
+
+
+   this.removeCoal = function(){
+      var found = false;
+      for(var i = 0; i< this.inventory.length; i++){
+         if(this.inventory[i].name == "Coal"){
+            if(this.inventory[i].count < 1){
+               found = false;
+            }else{
+               this.inventory[i].count--;
+               found = true;
+            }
+         }
+      }
+      if(!found){
+         this.powerLevel--;
+         console.log(this.powerLevel);
+      }
+   };
+   this.removeInventory = function(name, value){
+      if(!value){
+         var value = 1;
+      };
+      var found = false;
+      for(var i = 0; i< this.inventory.length; i++){
+         if(this.inventory[i].name == name){
+            if(this.inventory[i].count < value){
+               found = false;
+            }else{
+               this.inventory[i].count -= value;
+               found = true;
+            }
+         }
+      }
+      return found;  
+   };
+   this.checkInventory = function(name, value){
+      if(!value){
+         var value = 1;
+      };
+      var found = false;
+      for(var i = 0; i< this.inventory.length; i++){
+         if(this.inventory[i].name == name){
+            if(this.inventory[i].count < value){
+               found = false;
+            }else{
+               //this.inventory[i].count -= value;
+               found = true;
+            }
+         }
+      }
+      return found;  
+   };
 	return this;	
 }
 gamejs.utils.objects.extend(Player, gamejs.sprite.Sprite);
@@ -117,6 +174,31 @@ var Item = exports.Item = function(name, value, image){
    var dims = this.image.getSize();
    this.count= 1;
    this.rect = new gamejs.Rect([0,0], dims);
+   return this;
+}
+gamejs.utils.objects.extend(Item, gamejs.sprite.Sprite);
+
+var Upgrade = exports.Upgrade = function(name, value, image, cost){
+   this.name = name;
+   this.value = value;
+   this.cost = cost;
+   this.image = gamejs.image.load(image);
+   var dims = this.image.getSize();
+   this.count= 1;
+   this.rect = new gamejs.Rect([0,0], dims);
+
+   this.pay = function(){
+      var canBuy = true;
+      this.cost.forEach(function(item){
+         if(!globals.Player.checkInventory(item[0], item[1])){
+            canBuy = false;
+         }
+      });
+      this.cost.forEach(function(item){
+         !globals.Player.removeInventory(item[0], item[1]);
+      });
+   }
+
    return this;
 }
 gamejs.utils.objects.extend(Item, gamejs.sprite.Sprite);
