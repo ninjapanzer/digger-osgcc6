@@ -1,28 +1,15 @@
 var gamejs = require('gamejs');
 var globals = require('./globals');
+var draw = require('gamejs/draw');
 
-
-var MapController = function() {
-
-   this.offset = [0,0];
-
-   this.handle = function(event) {
-      if (event.type === gamejs.event.KEY_DOWN) {
-         if (event.key === gamejs.event.K_LEFT) {
-            this.offset[0] += 50;
-         } else if (event.key === gamejs.event.K_RIGHT) {
-            this.offset[0] -= 50;
-         } else if (event.key === gamejs.event.K_DOWN) {
-            this.offset[1] -= 50;
-         } else if (event.key === gamejs.event.K_UP) {
-            this.offset[1] += 50;
-         }
-      }
+var HUD = exports.HUD = function(){
+   this.rect = new gamejs.Rect([0,0], [globals.screenDim[1],50]);
+   this.color = '#000000'
+   this.draw = function(surface){
+      draw.rect(surface, this.color, this.rect, 0);
    };
-
-   this.update = function(msDuration) {
-
-   };
-
+   this.update = function(player){
+   	
+   }
    return this;
 };
