@@ -25,6 +25,7 @@ gamejs.ready(function() {
         });
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);
+        myPlayer.addInventory("Coal");
         myPlayer.addInventory("Red Gem");
         myPlayer.addInventory("Blue Gem");
         myPlayer.addInventory("Green Gem");
