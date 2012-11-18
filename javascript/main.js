@@ -1,5 +1,7 @@
 var gamejs = require('gamejs');
 var view = require('./view');
+var tile = require(',.tile');
+
 
 // gamejs.preload([]);
 
