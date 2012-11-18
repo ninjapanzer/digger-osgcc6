@@ -71,6 +71,12 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	this.image = gamejs.image.load('assets/images/player/player_right.png');
 	this.rect = new gamejs.Rect(initialLocation,globals.playerSizeAry);
    this.inventory = [];
+   this.difficulty = 0;
+
+   this.upgrade = function(){
+      this.difficulty++;
+   }
+
    this.addInventory = function(name){
       var found = false;
       for(var i = 0; i< this.inventory.length; i++){

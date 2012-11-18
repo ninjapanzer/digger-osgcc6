@@ -25,6 +25,9 @@ var Tile = exports.Tile = function(rect) {
    this.rect = new gamejs.Rect(rect, dims);
 
    this.kill = function(){
+      if(this.difficulty > globals.Player.difficulty){
+         return;
+      }
       this._alive = false;
       this._groups.forEach(function(group) {
          group.remove(this);
