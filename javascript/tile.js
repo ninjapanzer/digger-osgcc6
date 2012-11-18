@@ -16,23 +16,11 @@ var Tile = exports.Tile = function(rect) {
 // inherit (actually: set prototype)
 gamejs.utils.objects.extend(Tile, gamejs.sprite.Sprite);
 
-var tiles = ['assets/images/5.jpg', 'assets/images/5.jpg', 'assets/images/5.jpg', 'assets/images/5.jpg', 'assets/images/5.jpg'];
-
-var Setup = exports.Setup = function(tiles){
-	//50x100
-	var tileGroup = new gamejs.sprite.Group();
-	for(var i = 0; i < 50; i++){
-		for(var j = 2; j < 100; j++){
-			tileGroup.add(new Tile([64*i,64*j]));
-		}
-	}
-	return tileGroup;
-};
-
-var GroupController = exports.GroupController = function(tileGroup, offsets){
+var GroupController = function(tileGroup, offsets){
 
 	this.tileGroup = tileGroup;
 	this.offsets = offsets;
+	this.rect = new gamejs.Rect([0,0],[globals.tileDim[0]*globals.tileSize[0], globals.tileDim[1]*globals.tileSize[1]]);
 
 	this.handle = function(event) {
 		if (event.type === gamejs.event.KEY_DOWN) {
@@ -55,4 +43,18 @@ var GroupController = exports.GroupController = function(tileGroup, offsets){
 		});
    }
    return this;
+};
+
+var tiles = ['assets/images/5.jpg', 'assets/images/5.jpg', 'assets/images/5.jpg', 'assets/images/5.jpg', 'assets/images/5.jpg'];
+
+var Setup = exports.Setup = function(tiles){
+	//50x100
+
+	var tileGroup = new gamejs.sprite.Group();
+	for(var i = 0; i < globals.tileDim[0]; i++){
+		for(var j = 2; j < globals.tileDim[1]; j++){
+			tileGroup.add(new Tile([64*i,64*j]));
+		}
+	}
+	return new GroupController(tileGroup,[]);
 };
