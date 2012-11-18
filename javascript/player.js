@@ -53,6 +53,7 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	//instance variables
 	this.image = gamejs.image.load('assets/images/player/player_right.png');
 	this.rect = new gamejs.Rect(initialLocation,this.image.getSize());
+   this.inventory = [];
 	return this;	
 }
 gamejs.utils.objects.extend(Player, gamejs.sprite.Sprite);

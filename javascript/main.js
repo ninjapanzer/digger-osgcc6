@@ -18,6 +18,7 @@ gamejs.ready(function() {
     var tileGroupControl = tile.Setup([]);;
     var myPlayer = new player.Player([64,0], tileGroupControl);
     //myPlayer.draw(mainSurface);
+    var HUD = new view.HUD;
 
     var tick = function(msDuration) {
         gamejs.event.get().forEach(function(event) {
@@ -26,6 +27,8 @@ gamejs.ready(function() {
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);
         myPlayer.draw(mainSurface);
+        HUD.update(myPlayer);
+        HUD.draw(mainSurface);
     }
     gamejs.time.fpsCallback(tick, this, 60);
     /**
