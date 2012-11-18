@@ -2,12 +2,21 @@ var gamejs = require('gamejs');
 
 // gamejs.preload([]);
 
+gamejs.preload([
+   'assets/images/5.jpg'
+]);
+
 gamejs.ready(function() {
 
     var display = gamejs.display.setMode([600, 400]);
     display.blit(
-        (new gamejs.font.Font('30px Sans-serif')).render('Hello World')
+        
     );
+
+
+    var tick = function(msDuration) {
+        gamejs.event.get();
+    }
 
     /**
     function tick(msDuration) {
