@@ -7,6 +7,7 @@ globals.imgArray().push('assets/images/player/clearpop.png');
 globals.imgArray().push('assets/images/player/coalpop.png');
 globals.imgArray().push('assets/images/player/greenpop.png');
 globals.imgArray().push('assets/images/player/redpop.png');
+globals.imgArray().push('assets/town.png');
 var HUD = exports.HUD = function(){
    this.HUD = new gamejs.Rect([0,0], [globals.screenDim[0],70]);
    this.HUDBorder = new gamejs.Rect([0,0], [globals.screenDim[0],70]);
@@ -14,14 +15,26 @@ var HUD = exports.HUD = function(){
    this.draw = function(surface){
       draw.rect(surface, this.color, this.HUD, 0);
       draw.rect(surface, '#fff000', this.HUDBorder, 4);
+      if(globals.open){
+      /*this.Opening = new gamejs.Rect([100,100], [globals.screenDim[0]-100,globals.screenDim[1]/2]);
+      draw.rect(surface, this.color, this.Opening);*/
+}
    };
+var font = new gamejs.font.Font('20px monospace');
    this.update = function(player, display){
    	//Upper Start
    	var upperPosition = [10, 5];
    	//Lower Start
    	var position = [10,30];
-   	var font = new gamejs.font.Font('20px monospace');
-
+   	if(globals.open){
+         /*var openingSurface = font.render("Paul the genious geologist has stumbled upon a new town rich with awesome rocks and gem resources!\n"
++"The towns people have been generous enough to let Paul dig around as much as he wants as long as he\n"
++"continues to provide their town with power. \n"
++"The Mega Gear in the factory provides electricty to the homes in town. \n"
++"Dig around to find as many resources/gems as you can but make sure to keep the gear running so\n"
++"that the town stays powered during your excavation.\n", '#ffffff');
+      display.blit(openingSurface, [0, 0]);*/
+      }
    	//Upper Level
    	var headingSurface = font.render('Resources', '#ffffff');
    	display.blit(headingSurface, [10, 5]);

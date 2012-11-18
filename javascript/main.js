@@ -11,12 +11,13 @@ gamejs.preload(globals.imgArray());
 gamejs.ready(function() {
 
     var display = gamejs.display.setMode(globals.screenDim);
-    display.blit(new gamejs.image.load('assets/tiles/tiletest.png'));
+    //display.blit(new gamejs.image.load('assets/tiles/tiletest.png'));
     //var tile = new tile.Tile([64, 64]);
     var mainSurface = gamejs.display.getSurface();
     var tileGroupControl = tile.Setup([]);;
     var myPlayer = new player.Player([500,370], tileGroupControl);
     globals.Player = myPlayer;
+    display.blit(new gamejs.image.load('assets/town.png'));
     //myPlayer.draw(mainSurface);
     var HUD = new view.HUD;
     myPlayer.tileControl.move([(globals.screenDim[0]/2)/2,0]);
