@@ -9,6 +9,7 @@ globals.imgArray().push('assets/tiles/layer2.png');
 globals.imgArray().push('assets/tiles/layer3.png');
 globals.imgArray().push('assets/tiles/layer4.png');
 globals.imgArray().push('assets/sounds/coal_pick_up.wav');
+var c = new gamejs.mixer.Sound('assets/sounds/coal_pick_up.wav');
 var Tile = exports.Tile = function(rect) {
    // call superconstructor
    Tile.superConstructor.apply(this, arguments);
