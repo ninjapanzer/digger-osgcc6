@@ -1,3 +1,4 @@
+var gamejs = require('gamejs');
 var MapController = function() {
 
    this.offset = [0,0];
@@ -22,3 +23,4 @@ var MapController = function() {
 
    return this;
 };
+var Player = exports.Player = new Sprite()
