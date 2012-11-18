@@ -3,13 +3,24 @@ var gamejs = require('gamejs');
 
 globals.imgArray().push('assets/images/5.jpg');
 globals.imgArray().push('assets/tiles/tiletest.png');
+globals.imgArray().push('assets/tiles/layer0.png');
+globals.imgArray().push('assets/tiles/layer1.png');
+globals.imgArray().push('assets/tiles/layer2.png');
+globals.imgArray().push('assets/tiles/layer3.png');
+globals.imgArray().push('assets/tiles/layer4.png');
 
 var Tile = exports.Tile = function(rect) {
    // call superconstructor
    Tile.superConstructor.apply(this, arguments);
    this.speed = 0;
-   this.image = gamejs.image.load("assets/tiles/tiletest.png");
    this.difficulty=0;
+   this.image = gamejs.image.load("assets/tiles/layer"+this.difficulty+".png");
+
+   this.lockin = function(difficulty){
+      this.difficulty = difficulty;
+      this.image = gamejs.image.load("assets/tiles/layer"+this.difficulty+".png");
+   }
+
    var dims = this.image.getSize();
    this.rect = new gamejs.Rect(rect, dims);
 
@@ -134,9 +145,19 @@ var Setup = exports.Setup = function(tiles){
 	//50x100
 
 	var tileGroup = new gamejs.sprite.Group();
-	for(var i = 0; i < globals.tileDim[0]; i++){
-		for(var j = 2; j < globals.tileDim[1]; j++){
-			tileGroup.add(new Tile([64*i,64*j]));
+   var difficulty = 0;
+	for(var i = 2; i < globals.tileDim[0]; i++){
+      //console.log(difficulty)
+      if(i%10 == 0 && difficulty < 4){
+            difficulty++;
+         }
+		for(var j = 0; j < globals.tileDim[1]; j++){
+         var t = new Tile([64*j,64*i]);
+         /*if(Math.random()>.8 && t.difficulty < 4){
+            t.difficulty += 1;
+         }*/
+         t.lockin(difficulty);
+         tileGroup.add(t);
 		}
 	}
 	return new GroupController(tileGroup,[]);
