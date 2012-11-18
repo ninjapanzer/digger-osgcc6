@@ -16,6 +16,7 @@ gamejs.ready(function() {
     var mainSurface = gamejs.display.getSurface();
     var tileGroupControl = tile.Setup([]);;
     var myPlayer = new player.Player([64,0], tileGroupControl);
+    globals.Player = myPlayer;
     //myPlayer.draw(mainSurface);
     var HUD = new view.HUD;
 
@@ -25,11 +26,11 @@ gamejs.ready(function() {
         });
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);
-        myPlayer.addInventory("Coal");
-        myPlayer.addInventory("Red Gem");
-        myPlayer.addInventory("Blue Gem");
-        myPlayer.addInventory("Green Gem");
-        myPlayer.addInventory("Diamond");
+        //myPlayer.addInventory("Coal");
+        //myPlayer.addInventory("Red Gem");
+        //myPlayer.addInventory("Blue Gem");
+        //myPlayer.addInventory("Green Gem");
+        //myPlayer.addInventory("Diamond");
         myPlayer.update(msDuration);
         myPlayer.draw(mainSurface);
         HUD.draw(mainSurface);
