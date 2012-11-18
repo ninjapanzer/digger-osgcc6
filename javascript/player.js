@@ -1,5 +1,6 @@
 var globals = require('./globals');
 var gamejs = require('gamejs');
+var s = require('gamejs/sprite')
 globals.imgArray().push('assets/images/player/player_down.png');
 globals.imgArray().push('assets/images/player/player_up.png');
 globals.imgArray().push('assets/images/player/player_left.png');
@@ -10,10 +11,13 @@ globals.imgArray().push('assets/images/player/greengem.png');
 globals.imgArray().push('assets/images/player/cleargem.png');
 var Player = exports.Player = function(initialLocation, tileControl) {
 	this.tileControl = tileControl;
-   var availableGems = [new Item("Red Gem", 100, 'assets/images/player/redgem.png'),
-   new Item("Blue Gem", 100, 'assets/images/player/bluegem.png'),
-   new Item("Green Gem", 100, 'assets/images/player/greengem.png'),
-   new Item("Diamond", 1000, 'assets/images/player/cleargem.png')];
+	var availableGems = [new Item("Red Gem", 100, 'assets/images/player/redgem.png'),
+	new Item("Blue Gem", 100, 'assets/images/player/bluegem.png'),
+	new Item("Green Gem", 100, 'assets/images/player/greengem.png'),
+	new Item("Diamond", 1000, 'assets/images/player/cleargem.png')];
+    this.update = function(msDuration) {
+
+    }
 	this.handle = function(event) {
       if (event.type === gamejs.event.KEY_DOWN) {
          if (event.key === gamejs.event.K_LEFT) {
@@ -54,13 +58,17 @@ var Player = exports.Player = function(initialLocation, tileControl) {
          	}
          }
       }
+      //for(var i in this.tileControl.tileGroup) {
+      //	console.log(i);
+      //}
+      s.spriteCollide(this,this.tileControl.tileGroup,true);
     };
 
 	//calls superconstructor
 	Player.superConstructor.apply(this, arguments);
 	//instance variables
 	this.image = gamejs.image.load('assets/images/player/player_right.png');
-	this.rect = new gamejs.Rect(initialLocation,this.image.getSize());
+	this.rect = new gamejs.Rect(initialLocation,globals.playerSizeAry);
    this.inventory = [];
    this.addInventory = function(name){
       var found = false;

@@ -29,6 +29,7 @@ gamejs.ready(function() {
         myPlayer.addInventory("Blue Gem");
         myPlayer.addInventory("Green Gem");
         myPlayer.addInventory("Diamond");
+        myPlayer.update(msDuration);
         myPlayer.draw(mainSurface);
         HUD.draw(mainSurface);
         HUD.update(myPlayer, display);
