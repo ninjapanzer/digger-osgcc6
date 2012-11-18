@@ -1,4 +1,4 @@
-var gamejs = require('gamejs')
+var gamejs = require('gamejs');
 
 var MapController = function() {
 

@@ -2,6 +2,7 @@ var gamejs = require('gamejs');
 var view = require('./view');
 var tile = require('./tile');
 var player = require('./player');
+var globals = require('./globals');
 
 
 // gamejs.preload([]);

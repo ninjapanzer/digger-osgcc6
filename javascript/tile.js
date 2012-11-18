@@ -1,4 +1,4 @@
-var globals = require('./globals')
+var globals = require('./globals');
 var Tile = exports.Tile = function(rect) {
    // call superconstructor
    Tile.superConstructor.apply(this, arguments);
