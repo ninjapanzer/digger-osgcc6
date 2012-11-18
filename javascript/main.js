@@ -27,8 +27,8 @@ gamejs.ready(function() {
         display.clear();
         tileGroupControl.tileGroup.draw(mainSurface);
         myPlayer.draw(mainSurface);
-        HUD.update(myPlayer);
         HUD.draw(mainSurface);
+        HUD.update(myPlayer, display);
     }
     gamejs.time.fpsCallback(tick, this, 60);
     /**

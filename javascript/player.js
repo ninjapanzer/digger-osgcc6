@@ -57,3 +57,14 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	return this;	
 }
 gamejs.utils.objects.extend(Player, gamejs.sprite.Sprite);
+
+var Item = exports.Item = function(name, value, image){
+   globals.imgArray().push(image);
+   this.name = name;
+   this.value = value;
+   this.image = gamejs.image.load(image);
+   var dims = this.image.getSize();
+   this.rect = new gamejs.Rect([0,0], dims);
+   return this;
+}
+gamejs.utils.objects.extend(Item, gamejs.sprite.Sprite);
