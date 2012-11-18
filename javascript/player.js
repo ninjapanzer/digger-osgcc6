@@ -12,6 +12,7 @@ globals.imgArray().push('assets/images/player/cleargem.png');
 globals.imgArray().push('assets/images/player/coalgem.png');
 var Player = exports.Player = function(initialLocation, tileControl) {
 	this.tileControl = tileControl;
+   this.lastPos = [0,0,0];
 
    var availableGems = [new Item("Red Gem", 100, 'assets/images/player/redgem.png'),
    new Item("Blue Gem", 100, 'assets/images/player/bluegem.png'),
@@ -21,6 +22,8 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 
 	this.handle = function(event) {
       if (event.type === gamejs.event.KEY_DOWN) {
+         this.lastPos = [this.rect.x, this.rect.y, this.image];
+         console.log(this.lastPos);
          if (event.key === gamejs.event.K_LEFT) {
          	if(this.rect.x - globals.tileSize[1] > 0){
          		this.rect.x -= globals.tileSize[1];
@@ -71,6 +74,22 @@ var Player = exports.Player = function(initialLocation, tileControl) {
 	this.image = gamejs.image.load('assets/images/player/player_right.png');
 	this.rect = new gamejs.Rect(initialLocation,globals.playerSizeAry);
    this.inventory = [];
+   this.difficulty = 0;
+
+   this.revertPos = function(){
+      console.log(this.lastPos);
+      this.rect.x = this.lastPos[0];
+      this.rect.y = this.lastPos[1];
+      this.image = this.lastPos[2];
+   };
+
+   this.move = function(){};
+
+
+   this.upgrade = function(){
+      this.difficulty++;
+   }
+
    this.addInventory = function(name){
       var found = false;
       for(var i = 0; i< this.inventory.length; i++){

@@ -26,6 +26,10 @@ var Tile = exports.Tile = function(rect) {
    this.rect = new gamejs.Rect(rect, dims);
 
    this.kill = function(){
+      if(this.difficulty > globals.Player.difficulty){
+         globals.Player.revertPos();
+         return;
+      }
       this._alive = false;
       this._groups.forEach(function(group) {
          group.remove(this);
@@ -154,10 +158,12 @@ var Setup = exports.Setup = function(tiles){
          }
 		for(var j = 0; j < globals.tileDim[1]; j++){
          var t = new Tile([64*j,64*i]);
-         /*if(Math.random()>.8 && t.difficulty < 4){
-            t.difficulty += 1;
-         }*/
-         t.lockin(difficulty);
+         if(Math.random()>.97 && difficulty < 4){
+            t.lockin(difficulty+1);
+         }else{
+            t.lockin(difficulty);
+         }
+         
          tileGroup.add(t);
 		}
 	}
