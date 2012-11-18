@@ -7,10 +7,7 @@ var globals = require('./globals');
 
 // gamejs.preload([]);
 
-gamejs.preload([
-   'assets/images/5.jpg',
-   'assets/tiles/tiletest.png'
-]);
+gamejs.preload(globals.img);
 
 gamejs.ready(function() {
 
