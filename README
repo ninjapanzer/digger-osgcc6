@@ -1,6 +1,6 @@
 # OSGCC entry Digger
-- GameJS based
+- GameJS based [https://github.com/oberhamsi/gamejs](https://github.com/oberhamsi/gamejs)
 - Written in 24 hours
 
 # Instructions
-- Run ./mongoose ./ to create the localhost:8080
+- Run ./mongooseosx ./ to create the localhost:8080

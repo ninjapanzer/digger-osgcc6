@@ -1,3 +1,8 @@
+/**
+Author: Paul Scarrone
+Date: 11-17-2012
+**/
+
 var gamejs = require('gamejs');
 var img = [];
 exports.tileSize = [64,64];
