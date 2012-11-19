@@ -1,3 +1,8 @@
+/**
+Author: Paul Scarrone
+Date: 11-17-2012
+**/
+
 var gamejs = require('gamejs');
 var globals = require('./globals');
 var draw = require('gamejs/draw');
